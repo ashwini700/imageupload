@@ -12,13 +12,21 @@
     <div class="flex items-center">
         {{ include('shared/_avatar.html.twig', {'size': 32, profile: app.user.UserProfile}) }}
 
-        <div class="ml-16">
+
+        <div class="ml-16">   
+        {# <form action="{{ path('app_settings_profile_image') }}" method="post"> #}
+
             {{ form_start(form, {'attr': {'novalidate': 'novalidate'} }) }}
+
             {{ form_label(form.profileImage, 'Change', {'label_attr': {'class': 'shadow-sm border-transparent bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-900 cursor-pointer rounded-md border p-2'}}) }}
-            {{ form_widget(form.profileImage, {'attr': {'class': 'hidden'}}) }}
+           
+            {{ form_widget(form.profileImage, {'attr': {'class': 'hidden'}}) }} 
+            
             {{ form_errors(form.profileImage) }}
         </div>
     </div>
+
+    
     
 
     <div>
@@ -26,4 +34,12 @@
     </div>
 
     {{ form_end(form) }}
+
+     <h3>Uploaded Images:</h3>
+            <ul>
+                {% for profileImage in images %}
+                    <li><img src="https://127.0.0.1:8000/uploads/profiles/{{ profileImage}}" width="10%" alt="{{ profileImage }}"></li>
+                {% endfor %}
+            </ul>
+
 {% endblock %}

@@ -141,28 +141,14 @@ class SettingsProfileController extends AbstractController
         return array_diff(scandir($directory), ['.', '..']);
     }
 
-    // Display Images
+    #[Route('/settings/data', name: 'app_settings_data')]
+    public function getData(): JsonResponse
+    {
+        // Your logic to retrieve data goes here
+        $data = array('foo' => 'bar');
 
-    // #[Route('/settings/edit-image', name: 'app_settings_edit_profile')]
-    // #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    // public function editProfile(Request $request)
-    // {
-    //     $images = $this->getImagesFromDirectory();
-    //     $form = $this->createForm(ProfileImageType::class);
-    //     $form->handleRequest($request);
-
-    //     return $this->render('settings_profile/edit.html.twig', [
-    //         'form' => $form->createView(),
-    //         'images' => $images,
-    //     ]);
-    // }
-
-    // private function getImagesFromDirectory()
-    // {
-    //     $directory = $this->getParameter('kernel.project_dir').'/public/uploads/profiles';
-
-    //     return array_diff(scandir($directory), ['.', '..']);
-    // }
+        return new JsonResponse($data);
+    }
 }
 
     

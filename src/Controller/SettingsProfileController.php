@@ -144,7 +144,7 @@ class SettingsProfileController extends AbstractController
     #[Route('/settings/data', name: 'app_settings_data')]
     public function getData(): JsonResponse
     {
-        // Your logic to retrieve data goes here
+       
         $data = array('foo' => 'bar');
 
         return new JsonResponse($data);

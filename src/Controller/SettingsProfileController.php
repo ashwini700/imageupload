@@ -141,11 +141,17 @@ class SettingsProfileController extends AbstractController
         return array_diff(scandir($directory), ['.', '..']);
     }
 
-    #[Route('/settings/data', name: 'app_settings_data')]
+    #[Route('/settings/{id}/data', name: 'app_settings_data')]
     public function getData(): JsonResponse
     {
-       
-        $data = array('foo' => 'bar');
+        $images = $this->getImagesFromDirectory();
+          $data = [];
+            foreach ($images as $image) {
+            $data[] = [
+                'images' => $images,
+           
+        ];
+    }
 
         return new JsonResponse($data);
     }
